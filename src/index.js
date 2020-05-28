@@ -5,24 +5,34 @@ class App extends React.Component{
   constructor(props) {         // Need a cosntructor
     super(props);
     // ONLY PUT EQUAL WHEN DECLARING STATE
-    this.state = { lat: null}; //Setting a object name LAT = ???
-
-
-    window.navigator.geolocation.getCurrentPosition(
-      (position) => {
-        //Called setState to update the state of the latitude
-        // this is a CallBack function where we return the result of the state
-        this.setState({lat: position.coords.latitude});
-      },
-      (err) => {
-        this.setState({lat: err.message});
-      }
-    );
+    this.state = {lat: null, err:''}; //Setting a object name LAT = ???
 
   }
+  componentDidMount(){
+    console.log('The component started right now');
+    window.navigator.geolocation.getCurrentPosition(
+      position => this.setState({lat: position.coords.latitude}),
+      err => this.setState({err: err.message})
+    ); 
+  }
+  componentDidUpdate(){
+    console.log('The componentDidUpdate');
+  }
+
   render(){
 
-    return <div>Lat: {this.state.lat} </div>; //How to reference a var inside the state
+     if(this.state.err && !this.state.lat){
+      return <div>Error: {this.state.err} </div>
+    }
+    if(!this.state.err && this.state.lat){
+      return <div>latitude: {this.state.lat} </div>
+    }
+
+    if(!this.state.lat && !this.state.err){
+      return <div>Loading...</div>
+    }
+    //How to reference a var inside the state
+
   }
 }
 
