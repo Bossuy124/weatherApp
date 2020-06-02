@@ -1,0 +1,30 @@
+.icon-left {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+}
+.icon-right {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+.season-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.season-display.Winter i{ /* NOTE: one do .bla tag if referencing a tag */
+  color: white;
+
+}
+.season-display.Summer i{
+    color: orange;
+}
+.Winter{ /* NOTE: When referncing a condition */
+  background-image: url('https://images.wallpaperscraft.com/image/snow_winter_trees_136654_2560x1080.jpg');
+}
+.Summer{
+  background-image: url('https://www.desktopbackground.org/download/o/2014/07/29/801085_beach-vector-wallpapers-hd-1494-1920x1080-umad-com_1920x1080_h.jpg');
+}

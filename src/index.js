@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SeasonDisplay from './SeasonDisplay';
 // Replaced the af with  a class component
 class App extends React.Component{
   constructor(props) {         // Need a cosntructor
@@ -13,7 +14,7 @@ class App extends React.Component{
     window.navigator.geolocation.getCurrentPosition(
       position => this.setState({lat: position.coords.latitude}),
       err => this.setState({err: err.message})
-    ); 
+    );
   }
   componentDidUpdate(){
     console.log('The componentDidUpdate');
@@ -25,11 +26,14 @@ class App extends React.Component{
       return <div>Error: {this.state.err} </div>
     }
     if(!this.state.err && this.state.lat){
-      return <div>latitude: {this.state.lat} </div>
+      return <SeasonDisplay lat={this.state.lat}/>
     }
 
     if(!this.state.lat && !this.state.err){
-      return <div>Loading...</div>
+      return <div className="ui active dimmer">
+      <div className ="ui massive text loader">Please Press Allow</div>
+      </div>
+
     }
     //How to reference a var inside the state
 
