@@ -31,8 +31,7 @@ const {text, iconName} = seasonConfig[season];  // Calling the objetc with the s
 console.log(" Approx Season is: " + season);
 //Getting the icone name from if statement abd passing to Semantic UI
 // the dollar sign and other symbols is to reference the className variable in the tags
-// Essentially the icon outsdie is saying its a icon and the dollar sign is the type of icon variable
-//The dollar sing conbines the two
+
 return(
     <div className={`season-display ${season}`}>
     <i className={`icon-left massive ${iconName} icon`} />
